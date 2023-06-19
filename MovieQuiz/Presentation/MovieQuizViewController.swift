@@ -6,16 +6,16 @@ final class MovieQuizViewController: UIViewController {
         
         
         
-        let currentQuestion = questions[currentQuestionIndex]
+     let currentQuestion = questions[currentQuestionIndex]
         let answer = false
-        print (answer)
+       // print (answer)
         showAnswerResult(isCorrect: answer == currentQuestion.correctAnswer)
         
     }
     @IBAction private func yesButtonClicked(_ sender: UIButton) {
         let currentQuestion = questions[currentQuestionIndex]
         let answer = true
-        print (answer)
+        //print (answer)
         showAnswerResult(isCorrect: answer == currentQuestion.correctAnswer)
         
     }
@@ -33,27 +33,27 @@ final class MovieQuizViewController: UIViewController {
     
     
     
-    struct ViewModel {
+    private  struct ViewModel {
         let image: UIImage
         let question: String
         let questionNumber: String
     }
     
     // для состояния "Вопрос показан"
-    struct QuizStepViewModel {
+    private   struct QuizStepViewModel {
         let image: UIImage
         let question: String
         let questionNumber: String
     }
     
     // для состояния "Результат квиза"
-    struct QuizResultsViewModel {
+    private  struct QuizResultsViewModel {
         let title: String
         let text: String
         let buttonText: String
     }
     
-    struct QuizQuestion {
+    private  struct QuizQuestion {
         let image: String
         let text: String
         let correctAnswer: Bool
