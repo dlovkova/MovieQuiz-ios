@@ -29,5 +29,19 @@ final class AlertPresenter: AlertPresenterProtocol {
         delegate?.present(alert, animated: true, completion: nil)
        
     }
+    
+    func showErrorAlert(errorAlert: errorAlert) {
+        let alert = UIAlertController(
+            title: errorAlert.title,
+           message: errorAlert.message,
+            preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: errorAlert.buttonText, style: .default) { _ in
+        //    errorAlert.buttonAction()
+        }
+        alert.addAction(action)
+        delegate?.present(alert, animated: true, completion: nil)
+       
+    }
 }
 

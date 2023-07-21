@@ -29,6 +29,9 @@
 		E19941F02A4D4B75005139E0 /* QuizQuestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19941EF2A4D4B75005139E0 /* QuizQuestion.swift */; };
 		E19941F22A4D5B52005139E0 /* QuestionFactoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19941F12A4D5B52005139E0 /* QuestionFactoryProtocol.swift */; };
 		E19941F42A4D6161005139E0 /* QuestionFactoryDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E19941F32A4D6160005139E0 /* QuestionFactoryDelegate.swift */; };
+		E1CB770C2A69877C00782667 /* NetworkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB770B2A69877C00782667 /* NetworkClient.swift */; };
+		E1CB770E2A6989BD00782667 /* MostPopularMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB770D2A6989BD00782667 /* MostPopularMovies.swift */; };
+		E1CB77102A698ACE00782667 /* MoviesLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E1CB770F2A698ACE00782667 /* MoviesLoader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,6 +59,9 @@
 		E19941EF2A4D4B75005139E0 /* QuizQuestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizQuestion.swift; sourceTree = "<group>"; };
 		E19941F12A4D5B52005139E0 /* QuestionFactoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFactoryProtocol.swift; sourceTree = "<group>"; };
 		E19941F32A4D6160005139E0 /* QuestionFactoryDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionFactoryDelegate.swift; sourceTree = "<group>"; };
+		E1CB770B2A69877C00782667 /* NetworkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkClient.swift; sourceTree = "<group>"; };
+		E1CB770D2A6989BD00782667 /* MostPopularMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MostPopularMovies.swift; sourceTree = "<group>"; };
+		E1CB770F2A698ACE00782667 /* MoviesLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesLoader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +145,8 @@
 				E19941F32A4D6160005139E0 /* QuestionFactoryDelegate.swift */,
 				E19860122A5318370048807D /* AlertPresenterProtocol.swift */,
 				E15FFF122A5970CF00ABCC7C /* StatisticService.swift */,
+				E1CB770B2A69877C00782667 /* NetworkClient.swift */,
+				E1CB770F2A698ACE00782667 /* MoviesLoader.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -151,6 +159,7 @@
 				E19941EF2A4D4B75005139E0 /* QuizQuestion.swift */,
 				E15325992A4DD03D008F00A0 /* AlertModel.swift */,
 				E15FFF142A5A923B00ABCC7C /* GameRecord.swift */,
+				E1CB770D2A6989BD00782667 /* MostPopularMovies.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -230,10 +239,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				AD5EE5DE284D7887003966EF /* UIColor+Extensions.swift in Sources */,
+				E1CB770E2A6989BD00782667 /* MostPopularMovies.swift in Sources */,
 				AD7AFA552836189F00399704 /* Array+Extensions.swift in Sources */,
 				E19941F22A4D5B52005139E0 /* QuestionFactoryProtocol.swift in Sources */,
 				E19941F42A4D6161005139E0 /* QuestionFactoryDelegate.swift in Sources */,
 				E19860132A5318370048807D /* AlertPresenterProtocol.swift in Sources */,
+				E1CB770C2A69877C00782667 /* NetworkClient.swift in Sources */,
+				E1CB77102A698ACE00782667 /* MoviesLoader.swift in Sources */,
 				E15FFF152A5A923B00ABCC7C /* GameRecord.swift in Sources */,
 				E153259A2A4DD03D008F00A0 /* AlertModel.swift in Sources */,
 				AD1ABAB62831907B00B3E448 /* MovieQuizViewController.swift in Sources */,
@@ -408,7 +420,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.practicum.MovieQuiz1;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.practicum.MovieQuiz333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -440,7 +452,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.practicum.MovieQuiz1;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.yandex.practicum.MovieQuiz333;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
