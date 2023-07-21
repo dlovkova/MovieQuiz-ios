@@ -12,9 +12,15 @@ import UIKit
 
 struct AlertModel {
     
-    let title: String = "Этот раунд окончен!"
+    let title: String?
     var message: String?
-    let buttonText: String = "Сыграть еще раз!"
+    let buttonText: String?
     let buttonAction: () -> Void
 }
 
+struct errorAlert {
+    let title: String?
+    var message: String?
+    let buttonText: String?
+   // let buttonAction: () -> Void
+}
