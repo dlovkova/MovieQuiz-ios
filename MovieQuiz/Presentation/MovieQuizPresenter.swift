@@ -14,14 +14,14 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
     var currentQuestionIndex: Int = 0
     let questionsCount: Int = 10
     var currentQuestion: QuizQuestion?
-    weak var viewController: MovieQuizViewController?
+    weak var viewController: MovieQuizViewControllerProtocol?
     private var questionFactory: QuestionFactoryProtocol?
     
     private let statisticService: StatisticService!
     var correctAnswers: Int = 0
     
     
-    init(viewController: MovieQuizViewController) {
+    init(viewController: MovieQuizViewControllerProtocol?) {
         self.viewController = viewController
         statisticService = StatisticServiceImplementation()
         questionFactory = QuestionFactory(moviesLoader: MoviesLoader(), delegate: self)
@@ -94,16 +94,15 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
     func showNextQuestionOrResults() {
         if self.isLastQuestion() {
             
-            viewController?.imageView.layer.borderColor = UIColor.ypBlack.cgColor
+            
             viewController?.showResults()
-            viewController?.yesButton.isEnabled = true
-            viewController?.noButton.isEnabled = true
+            viewController?.resetBorderAndButtons()
+            
         } else {
             self.switchToNextQuestion()
-            viewController?.imageView.layer.borderColor = UIColor.ypBlack.cgColor
             
-            viewController?.yesButton.isEnabled = true
-            viewController?.noButton.isEnabled = true
+            viewController?.resetBorderAndButtons()
+            
             questionFactory?.requestNextQuestion()
             
         }

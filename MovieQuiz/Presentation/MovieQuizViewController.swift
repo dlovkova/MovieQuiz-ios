@@ -1,6 +1,7 @@
 import UIKit
 
-final class MovieQuizViewController: UIViewController {
+final class MovieQuizViewController: UIViewController, MovieQuizViewControllerProtocol {
+   
     // MARK: - Lifecycle
     
     //    override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -102,6 +103,7 @@ final class MovieQuizViewController: UIViewController {
         )
         
         alertPresenter?.showAlert(alertModel: alertModel)
+       
     }
     
     
@@ -114,8 +116,13 @@ final class MovieQuizViewController: UIViewController {
         noButton.isEnabled = false
     }
     
+    func resetBorderAndButtons() {
+        imageView.layer.borderColor = UIColor.ypBlack.cgColor
+        yesButton.isEnabled = true
+        noButton.isEnabled = true
+    }
     
-    private func showLoadingIndicator() {
+     func showLoadingIndicator() {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
