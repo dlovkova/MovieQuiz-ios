@@ -12,7 +12,7 @@ import Foundation
 protocol StatisticService {
     var totalAccuracy: Double { get }
     var gamesCount: Int { get }
-    var bestGame: GameRecord? { get }
+    var bestGame: GameRecord { get }
     
     func store(correct: Int, total: Int)
     
@@ -70,11 +70,11 @@ final class StatisticServiceImplementation: StatisticService {
         }
     }
     
-    var bestGame: GameRecord? {
+    var bestGame: GameRecord {
         get {
             guard let data = userDefaults.data(forKey: Keys.bestGame.rawValue),
                   let bestGame = try? JSONDecoder().decode(GameRecord.self, from: data) else {
-                return nil
+                return .init(correct: correct, total: total, date: Date())
             }
             
             return bestGame
@@ -104,18 +104,21 @@ final class StatisticServiceImplementation: StatisticService {
                                           total: total,
                                           date: date())
         
-       if let previousBestGame = bestGame {
-            
-            if currentBestGame > previousBestGame {
-                bestGame = currentBestGame
-            }
-        } else {
+        if currentBestGame > bestGame {
             bestGame = currentBestGame
         }
         
+        
+    }
+    
+    func resetStatistics() {
+        if let bundleID = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundleID)
+        }
     }
     
 }
 
-let controller = MovieQuizViewController()
+
+
 

@@ -22,5 +22,4 @@ struct errorAlert {
     let title: String?
     var message: String?
     let buttonText: String?
-   // let buttonAction: () -> Void
 }
