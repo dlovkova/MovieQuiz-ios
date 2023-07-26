@@ -10,13 +10,10 @@ import UIKit
 
 final class AlertPresenter: AlertPresenterProtocol {
     
-    
-    
     weak var delegate: UIViewController?
     init(delegate: UIViewController?) {
         self.delegate = delegate
     }
-    
     
     func showAlert(alertModel: AlertModel) {
         
@@ -31,17 +28,15 @@ final class AlertPresenter: AlertPresenterProtocol {
         alert.addAction(action)
         delegate?.present(alert, animated: true, completion: nil)
         alert.view.accessibilityIdentifier = "Alert"
-       
     }
     
     func showErrorAlert(errorAlert: errorAlert) {
         let alert = UIAlertController(
             title: errorAlert.title,
-           message: errorAlert.message,
+            message: errorAlert.message,
             preferredStyle: .alert)
         
         let action = UIAlertAction(title: errorAlert.buttonText, style: .default) { _ in
-        //    errorAlert.buttonAction()
         }
         alert.addAction(action)
         delegate?.present(alert, animated: true, completion: nil)

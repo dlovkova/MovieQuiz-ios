@@ -1,7 +1,7 @@
 import UIKit
 
 final class MovieQuizViewController: UIViewController, MovieQuizViewControllerProtocol {
-   
+    
     // MARK: - Lifecycle
     
     //    override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -41,24 +41,21 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     private var alert: AlertModel?
     private var alertPresenter: AlertPresenter?
     private var presenter: MovieQuizPresenter!
-  private var statistics: StatisticServiceImplementation?
+    // private var statistics: StatisticServiceImplementation?
     
     weak var delegate: UIViewController?
     
     
-    // MARK: - Initializers
-    
-    // MARK: - UIViewController(*)
-    
+
     // MARK: - Public Methods
     
     override func viewDidLoad() {
         super.viewDidLoad()
         alertPresenter = AlertPresenter(delegate:self)
-        statistics = StatisticServiceImplementation()
+        //statistics = StatisticServiceImplementation()
         presenter = MovieQuizPresenter(viewController: self)
         presenter.viewController = self
-       statistics?.resetStatistics()
+        //  statistics?.resetStatistics()
         showLoadingIndicator()
     }
     
@@ -72,12 +69,10 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     // MARK: - IBAction
     
     @IBAction private func yesButtonClicked(_ sender: UIButton) {
-        
         presenter.yesButtonClicked()
     }
     
     @IBAction private func noButtonClicked(_ sender: UIButton) {
-        
         presenter.noButtonClicked()
     }
     
@@ -100,14 +95,9 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
             buttonAction: { [weak self] in
                 self?.presenter?.restartGame()
             }
-            
         )
-        
         alertPresenter?.showAlert(alertModel: alertModel)
-       
     }
-    
-    
     
     func highlightImageBorder(isCorrectAnswer: Bool) {
         imageView.layer.masksToBounds = true
@@ -123,7 +113,7 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
         noButton.isEnabled = true
     }
     
-     func showLoadingIndicator() {
+    func showLoadingIndicator() {
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
     }
@@ -141,7 +131,6 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
         )
         
         alertPresenter?.showErrorAlert(errorAlert: errorAlert)
-        
         presenter.restartGame()
     }
     

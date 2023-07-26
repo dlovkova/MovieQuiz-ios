@@ -16,7 +16,6 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
     var currentQuestion: QuizQuestion?
     weak var viewController: MovieQuizViewControllerProtocol?
     private var questionFactory: QuestionFactoryProtocol?
-    
     private let statisticService: StatisticService!
     var correctAnswers: Int = 0
     
@@ -28,9 +27,6 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         questionFactory?.loadData()
         
     }
-    
-    
-    
     
     func yesButtonClicked() {
         didAnswer(isYes: true)
@@ -54,13 +50,11 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         }
     }
     
-    
-    
     func showAnswerResult(isCorrect: Bool) {
         didAnswer(isCorrectAnswer: isCorrect)
         viewController?.highlightImageBorder(isCorrectAnswer: isCorrect)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
             guard let self = self else { return }
             self.showNextQuestionOrResults()
         }
@@ -93,28 +87,19 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
     
     func showNextQuestionOrResults() {
         if self.isLastQuestion() {
-            
-            
             viewController?.showResults()
             viewController?.resetBorderAndButtons()
             
         } else {
             self.switchToNextQuestion()
-            
             viewController?.resetBorderAndButtons()
-            
             questionFactory?.requestNextQuestion()
-            
         }
     }
     
    
     func makeResultMessage() -> String {
-//        guard let statisticService = statisticService else {
-//            assertionFailure("error message")
-//            return ""
-//        }
-//
+
         var message: String?
         
         if let statisticService = statisticService {
@@ -125,7 +110,7 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         let accuracy = String(format: "%.2f", statisticService.totalAccuracy)
         let totalPlaysCountLine = "Количество сыгранных квизов: \(statisticService.gamesCount)"
         let currentGameResultLine = "Ваш результат: \(correctAnswers)/\(questionsCount)"
-        let bestGameInfoLine = "Рекорд: \(bestGame!.correct)/\(bestGame!.total) (\(bestGame!.date.dateTimeString))"
+        let bestGameInfoLine = "Рекорд: \(bestGame.correct)/\(bestGame.total) (\(bestGame.date.dateTimeString))"
         let averageAccuracyLine = "Средняя точность: \(accuracy)%"
         
         let components: [String] =
@@ -139,8 +124,6 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         }
         return message!
     }
-    
-    
     
     func restartGame() {
         currentQuestionIndex = 0
