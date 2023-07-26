@@ -60,7 +60,7 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         didAnswer(isCorrectAnswer: isCorrect)
         viewController?.highlightImageBorder(isCorrectAnswer: isCorrect)
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) { [weak self] in
             guard let self = self else { return }
             self.showNextQuestionOrResults()
         }
@@ -108,18 +108,24 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
         }
     }
     
-    
+   
     func makeResultMessage() -> String {
-        guard let statisticService = statisticService, let bestGame = statisticService.bestGame else {
-            assertionFailure("error message")
-            return ""
-        }
+//        guard let statisticService = statisticService else {
+//            assertionFailure("error message")
+//            return ""
+//        }
+//
+        var message: String?
+        
+        if let statisticService = statisticService {
+        let bestGame = statisticService.bestGame
+        
         statisticService.store(correct: correctAnswers, total: questionsCount)
         
         let accuracy = String(format: "%.2f", statisticService.totalAccuracy)
         let totalPlaysCountLine = "Количество сыгранных квизов: \(statisticService.gamesCount)"
         let currentGameResultLine = "Ваш результат: \(correctAnswers)/\(questionsCount)"
-        let bestGameInfoLine = "Рекорд: \(bestGame.correct)/\(bestGame.total) (\(bestGame.date.dateTimeString))"
+        let bestGameInfoLine = "Рекорд: \(bestGame!.correct)/\(bestGame!.total) (\(bestGame!.date.dateTimeString))"
         let averageAccuracyLine = "Средняя точность: \(accuracy)%"
         
         let components: [String] =
@@ -129,7 +135,9 @@ final class MovieQuizPresenter: QuestionFactoryDelegate {
          averageAccuracyLine]
         
         let resultMessage = components.joined(separator: "\n")
-        return resultMessage
+        message = resultMessage
+        }
+        return message!
     }
     
     

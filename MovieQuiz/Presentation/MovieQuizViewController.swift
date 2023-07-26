@@ -41,6 +41,7 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     private var alert: AlertModel?
     private var alertPresenter: AlertPresenter?
     private var presenter: MovieQuizPresenter!
+  private var statistics: StatisticServiceImplementation?
     
     weak var delegate: UIViewController?
     
@@ -54,10 +55,10 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewControllerPr
     override func viewDidLoad() {
         super.viewDidLoad()
         alertPresenter = AlertPresenter(delegate:self)
-        
+        statistics = StatisticServiceImplementation()
         presenter = MovieQuizPresenter(viewController: self)
         presenter.viewController = self
-        
+       statistics?.resetStatistics()
         showLoadingIndicator()
     }
     

@@ -74,7 +74,7 @@ final class StatisticServiceImplementation: StatisticService {
         get {
             guard let data = userDefaults.data(forKey: Keys.bestGame.rawValue),
                   let bestGame = try? JSONDecoder().decode(GameRecord.self, from: data) else {
-                return nil
+                return .init(correct: correct, total: total, date: Date())
             }
             
             return bestGame
@@ -114,8 +114,15 @@ final class StatisticServiceImplementation: StatisticService {
         }
         
     }
+   
+    func resetStatistics() {
+        if let bundleID = Bundle.main.bundleIdentifier {
+            UserDefaults.standard.removePersistentDomain(forName: bundleID)
+        }
+        }
     
 }
 
-let controller = MovieQuizViewController()
+//let controller = MovieQuizViewController()
+
 
